@@ -1,0 +1,247 @@
+<!doctype html>
+<html>
+    <head> 
+        <meta charset="UTF-8"> 
+        <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1"> 
+        <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
+        <title>js</title>
+    </head> 
+    <body> 
+      
+      <p id="1"></p>
+      <p id="2"></p>
+      <p id="3"></p>
+      
+      
+    </body>
+    <script>
+    let a=[];
+    let b=[];
+    var j=0;
+    let b1="";
+    let s="2*lg(2+2+1)^2*3/4*2";
+    var v="";
+    let w="";
+  
+  for(let i=0; i<(s.length)/2; i++) {
+    if(s.includes("(")&&s.includes("(")) {
+    let ij=0;
+ /* for(let i=0; i<=s.length; i++){
+    for(let ij=0; ij<(s.indexOf(")")-s.lastIndexOf("("))-1; ij++){
+      br[ij]=s[s.lastIndexOf("(")+ij+1] ;       
+    }
+  }*/
+    s1=s.slice(0,s.lastIndexOf("("));
+    s2=s.slice(s.indexOf(")")+1);
+    b1=s.slice(s.lastIndexOf("(")+1,s.indexOf(")"));
+    g(b1);
+    s=s.slice(0,s.lastIndexOf("("))+v+s.slice(s.indexOf(")")+1);
+/*    for(let i=0; i<v.length; i++){
+        if(v[i]==undefined){
+           for (let j=0; j<v.length; j++){
+              v[j]=v[j+1];
+           }
+        }
+    }*/
+    w=(s1+v+s2);
+    }
+  }
+  
+  for(var i=0; i<(s.length); i++)
+    a[i]=s[i];
+    
+        for(var i=0; i<a.length; i++){
+           
+     //    if((a[i]=="-"||a[i]=="+")&&(i==0)){i++;}
+           
+         if(isNaN(a[i])&&a[i]!="."){ 
+           if (b[j]==undefined){b[j]=a[i];} 
+           else b[j]=b[j]+a[i];
+           j++;}
+         else{
+           if (b[j]==undefined){b[j]=a[i];} 
+           else b[j]=b[j]+a[i]; 
+           if(isNaN(a[i+1])&&a[i+1]!=".")j++; 
+         }   
+    }
+    
+/*    for (var i=0; i<a.length; i++){
+      if (a[i]==0||a[i]==1||a[i]==2||a[i]==3||a[i]==4||a[i]==5||
+      a[i]==6||a[i]==7||a[i]==8||a[i]==9||a[i]=="."){
+        if (b[j]==undefined){b[j]=a[i];} 
+        else b[j]=b[j]+a[i];
+      if(a[i+1]!=0&&a[i+1]!=1&&a[i+1]!=2&&a[i+1]!=3&&a[i+1]!=4&&a[i+1]!=5&&
+      a[i+1]!=6&&a[i+1]!=7&&a[i+1]!=8&&a[i+1]!=9&&a[i+1]!="."){
+        j++;
+      }
+      }
+      if(a[i]!=0&&a[i]!=1&&a[i]!=2&&a[i]!=3&&a[i]!=4&&a[i]!=5&&
+      a[i]!=6&&a[i]!=7&&a[i]!=8&&a[i]!=9&&a[i]!="."){
+        if (b[j]==undefined){b[j]=a[i];} 
+        else b[j]=b[j]+a[i];
+        j++;
+      if (a[i+1]==0||a[i+1]==1||a[i+1]==2||a[i+1]==3||a[i+1]==4||a[i+1]==5||
+      a[i+1]==6||a[i+1]==7||a[i+1]==8||a[i+1]==9||a[i+1]=="."){
+        j++;
+      }
+      }
+    }
+  */  
+    
+/*    if(b.includes("(")&&b.includes("(")) {
+        let ij=0;
+    for(let i=0; i<=b.length; i++){
+      for(let ij=0; ij<(b.indexOf(")")-b.lastIndexOf("("))-1; ij++){
+       br[ij]=b[b.lastIndexOf("(")+ij+1] ;
+       
+      }
+    }    
+    }
+   */ 
+    for(let i=0; i<=b.length; i++){
+      
+        if(b[i+1]=="^") {
+          b.splice(i,3,(Math.pow(b[i],b[i+2])));
+          i=-1;
+        }
+        if(b[i]=="l"&&b[i+1]=="n") {
+          b.splice(i,3,Math.log(b[i+2])/Math.log(Math.E));
+          i=-1;
+        }
+        if(b[i]=="l"&&b[i+1]=="g") {
+          b.splice(i,3,Math.log(b[i+2])/Math.log(10));
+          i=-1;
+        }
+    }
+    for(let i=0; i<b.length; i++){
+      
+        if(b[i+1]=="/") {
+          b.splice(i,3,b[i]/b[i+2]);
+          i=-1;
+        }
+        if(b[i+1]=="*") {
+          b.splice(i,3,b[i]*b[i+2]);
+          i=-1;
+        }
+    }
+    for(let i=1; i<=b.length; i++){
+      
+        if(b[i]=="-") {
+          b.splice(i-1,3,b[i-1]-b[i+1]);
+          i=0;
+        }
+        if(b[i]=="+") {
+          b.splice(i-1,3,(b[i-1]-(-b[i+1])));
+          i=0;
+        }
+    }
+    
+    document.getElementById("1").innerHTML=b;
+    
+    document.getElementById("2").innerHTML=w;
+    
+    document.getElementById("3").innerHTML=v;
+    
+    function g(c1){
+      let k=0;
+      let c=[]; 
+    for(var i=0; i<(c1.length); i++){
+           
+     //    if((a[i]=="-"||a[i]=="+")&&(i==0)){i++;}
+           
+         if(isNaN(c1[i])&&c1[i]!="."){ 
+           if (c[k]==undefined){c[k]=c1[i];} 
+           else c[k]=c[k]+c1[i];
+           k++;}
+         else{
+           if (c[k]==undefined){c[k]=c1[i];} 
+           else c[k]=c[k]+c1[i]; 
+           if(isNaN(c1[i+1])&&c1[i+1]!=".")k++; 
+         }   
+    }
+/*    for (var i=0; i<a.length; i++){
+      if (a[i]==0||a[i]==1||a[i]==2||a[i]==3||a[i]==4||a[i]==5||
+      a[i]==6||a[i]==7||a[i]==8||a[i]==9||a[i]=="."){
+        if (b[j]==undefined){b[j]=a[i];} 
+        else b[j]=b[j]+a[i];
+      if(a[i+1]!=0&&a[i+1]!=1&&a[i+1]!=2&&a[i+1]!=3&&a[i+1]!=4&&a[i+1]!=5&&
+      a[i+1]!=6&&a[i+1]!=7&&a[i+1]!=8&&a[i+1]!=9&&a[i+1]!="."){
+        j++;
+      }
+      }
+      if(a[i]!=0&&a[i]!=1&&a[i]!=2&&a[i]!=3&&a[i]!=4&&a[i]!=5&&
+      a[i]!=6&&a[i]!=7&&a[i]!=8&&a[i]!=9&&a[i]!="."){
+        if (b[j]==undefined){b[j]=a[i];} 
+        else b[j]=b[j]+a[i];
+        j++;
+      }
+    }
+*/
+/*    for(let i=0; i<=b.length; i++){
+      for(let j=0; j<=(b.indexOf(")")-b.lastIndexOf("(")); j++){
+       brg[j]=b[b.lastIndexOf("(")+j+1] ;
+      }
+    }
+    */
+    for(let i=0; i<=c.length; i++){
+      
+        if(c[i+1]=="^") {
+          c.splice(i,3,(Math.pow(c[i],c[i+2])));
+          i=0;
+        }
+        if(c[i]=="l"&&c[i+1]=="n") {
+          c.splice(i,3,Math.log(c[i+2])/Math.log(Math.E));
+          i=0;
+        }
+        if(c[i]=="l"&&c[i+1]=="g") {
+          c.splice(i,3,Math.log(c[i+2])/Math.log(10));
+          i=0;
+        }
+    }
+    for(let i=1; i<=c.length; i++){
+      
+        if(c[i]=="/") {
+          c.splice(i-1,3,c[i-1]/c[i+1]);
+          i=0;
+        }
+        if(c[i]=="*") {
+          c.splice(i-1,3,c[i-1]*c[i+1]);
+          i=0;
+        }
+    }
+    for(let i=1; i<=c.length; i++){  
+        if(c[i]=="-") {
+          c.splice(i-1,3,c[i-1]-c[i+1]);
+          i=0;
+        }
+        if(c[i]=="+") {
+          c.splice(i-1,3,c[i-1]-(-c[i+1]));
+          i=0;
+        }
+    }
+    
+
+/*     for(let i=0; i<c.length; i++){
+        if(c[i]==undefined){
+           for (let j=0; j<c.length; j++){
+              c[j]=c[j+1];
+           }
+        }
+    }*/
+    for(let i=0; i<c.length; i++){
+     
+     v=v+c[i]; 
+  //    v=v.slice(0,i)+c[i];
+      
+    
+    }
+    
+//    v=c.toString();
+    
+    }
+    
+    
+    </script>
+    
+ 
+</html>
